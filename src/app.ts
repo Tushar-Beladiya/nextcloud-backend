@@ -3,12 +3,15 @@ import path from 'path';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import http from 'http';
+import cors from 'cors';
 
 dotenv.config({ path: path.join(__dirname, '../.env') });
 import httpLogger from './middlewares/httpLogger';
 import router from './routes';
 
 const app: express.Application = express();
+
+app.use(cors());
 
 app.use(httpLogger);
 app.use(express.json());
